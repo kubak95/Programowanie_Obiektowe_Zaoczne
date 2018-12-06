@@ -3,43 +3,62 @@
 #include "stack.h"
 #include <stdbool.h>
 
-void init(struct stack *s1){
-//s1 = malloc(sizeof(struct stack))
-printf("1");
+void init(stack *s1, int size){
+	int *newItem;
+	newItem=(int *)malloc(sizeof(int)*size);
 
+	s1->data=newItem;
+	s1->size=size;
+	s1->top=0;
 }
 
-void destroy(struct stack *s1){
-//free(s1);
-	printf("2");
-}
-
-void clear(struct stack *s1){
+void destroy(stack *s1){
 	free(s1->data);
-	//s1->top=NULL;
+	s1->data=NULL;
+	s1->size=0;
+	s1->top=0;
 }
 
 
-bool isEmpty(struct stack *s1){
+void clear(stack *s1){
+	s1->top=0;
+}
+
+void push(stack *s1, int numb){
+	if (isFull(s1)){
+		printf("Stack is full, nothing to do\n");
+	}
+	else{
+	s1->top++;
+	s1->data[s1->top]=numb;
+	}
+}
+
+
+int pop(stack *s1){
+	if (isEmpty(s1)){
+		printf("Stack is empty, nothing to pop\n");
+	return -559038737;
+	}
+	else
+		return s1->data[s1->top--];
+}
+
+
+void peek(stack *s1){
+	printf("elo\n");
+}
+
+bool isEmpty(stack *s1){
 	if(s1->top==0)
 		return true;
 	else
 		return false;
 }
-
-void push(struct stack *s1, int numb){
-printf("4");
-}
-
-void pop(struct stack *s1){
-printf("5");
-}
-
-void peek(struct stack *s1){
-	printf("elo\n");
-}
-
-bool isFull(struct stack *s1){
-	return true;
+bool isFull(stack *s1){
+	if(s1->top >= s1->size-1)
+		return true;
+	else
+		return false;
 }
 

@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 
-typedef struct stack{
+typedef struct{
 
 	int top;
 	int size;
@@ -12,11 +12,11 @@ typedef struct stack{
 } stack;
 
 
-void init(struct stack * s1);
-void destroy(struct stack * s1);
-void clear(struct stack * s1);
-bool isEmpty(struct stack * s1);
-void push(struct stack * s1, int numb);
-void pop(struct stack * s1);
-void peek(struct stack * s1);
-bool isFull(struct stack * s1);
+void init(stack* s1, int size);
+void destroy(stack* s1);
+void clear(stack* s1);
+bool isEmpty(stack* s1);
+void push(stack* s1, int numb);
+int pop(stack* s1);
+void peek(stack* s1);
+bool isFull(stack* s1);
